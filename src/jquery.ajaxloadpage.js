@@ -11,7 +11,7 @@
         $(element).on(_this.options.trigger, _this.options.bindNodes, function () {
             if (this.tagName === "A") {
                 newUrl = $(this).attr("href");
-                urlData = {};
+                urlData = null;
             } else if (this.tagName === "FORM") {
                 newUrl = $(this).attr("action");
                 urlData = $(this).serialize();
