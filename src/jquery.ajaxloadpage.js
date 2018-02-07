@@ -1,7 +1,7 @@
 !function ($) {
     "use strict";
     //变量定义与赋值
-    var oldUrl = location.href, newUrl, urlData;
+    var oldUrl = location.href, newUrl, urlData, loadCount = 0;
     //主体方法
     var AjaxLoadPage = function (element, options) {
         var _this = this;
@@ -9,6 +9,7 @@
         _this.options = $.extend({}, AjaxLoadPage.DEFAULTS, options);
         //处理打开事件
         $(element).on(_this.options.trigger, _this.options.bindNodes, function () {
+            //根据节点数据
             if (this.tagName === "A") {
                 newUrl = $(this).attr("href");
                 urlData = null;
@@ -18,6 +19,7 @@
             } else {
                 return true;
             }
+            //加载页面
             _this.LoadPage(newUrl, urlData);
             event.preventDefault();
             return false;
@@ -42,6 +44,7 @@
         //Ajax 加载数据
         $("<div/>").load(url, data, function (response, status, xhr) {
             if (status === "success") {
+                loadCount++;
                 //替换数据
                 var parseHTML = $.parseHTML(response);
                 var jqHTML = $("<div>").append($(parseHTML));
