@@ -52,6 +52,11 @@
                     $(oldNode).replaceWith(jqHTML.find(newNode));
                 });
                 //替换页面状态
+                if (loadCount === 1) {
+                    if ($("<a/>").attr("href", url)[0].href === $("<a/>").attr("href", oldUrl)[0].href) {
+                        lock_history = true;
+                    }
+                }
                 if (_this.options.isHistory && !lock_history) {
                     history.pushState({url: url, data: data}, null, url);
                 }
