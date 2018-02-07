@@ -8,12 +8,12 @@
         //默认赋值
         _this.options = $.extend({}, AjaxLoadPage.DEFAULTS, options);
         //处理打开事件
-        $(element).on(_this.options.trigger, _this.options.bindNodes, function () {
-            //根据节点数据
-            if (this.tagName === "A") {
+        $(element).on(_this.options.trigger, _this.options.bindNodes, function (event) {
+            //根据事件类型与节点名称，设置数据
+            if (event.type === 'click' && this.tagName === "A") {
                 newUrl = $(this).attr("href");
                 urlData = null;
-            } else if (this.tagName === "FORM") {
+            } else if (event.type === 'submit' && this.tagName === "FORM") {
                 newUrl = $(this).attr("action");
                 urlData = $(this).serialize();
             } else {
