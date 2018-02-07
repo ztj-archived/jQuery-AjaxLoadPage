@@ -22,9 +22,21 @@
             event.preventDefault();
             return false;
         });
+        //处理当前页 history
+        if (!(window.history && window.history.pushState && history.replaceState)) {
+            _this.options.isHistory = false;
+        }
+        if (_this.options.isHistory) {
+            history.replaceState({url: oldUrl, data: null}, null, oldUrl);
+            $(window).on("popstate", function () {
+                if (history.state) {
+                    _this.LoadPage(history.state.url, history.state.data, true);
+                }
+            });
+        }
     };
     //加载页面方法
-    AjaxLoadPage.prototype.LoadPage = function (url, data) {
+    AjaxLoadPage.prototype.LoadPage = function (url, data, lock_history) {
         var _this = this;
         _this.options.before.call();
         //Ajax 加载数据
@@ -37,7 +49,9 @@
                     $(oldNode).replaceWith(jqHTML.find(newNode));
                 });
                 //替换页面状态
-                history.pushState(null, document.title, oldUrl);
+                if (_this.options.isHistory && !lock_history) {
+                    history.pushState({url: url, data: data}, null, url);
+                }
                 var result, title;
                 if ((result = response.match(/<title>([\s\S]+)<\/title>/i)) !== null) {
                     title = result[1];
@@ -56,6 +70,7 @@
     AjaxLoadPage.DEFAULTS = {
         bindNodes: "",
         replaceNodes: {},
+        isHistory: true,
         trigger: "click submit",
         before: function () {
         },
