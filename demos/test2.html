@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>jQuery AjaxLoadPage Demos Test2 Page</title>
+    <title>Test2Page - jQuery AjaxLoadPage Demos</title>
+    <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../src/jquery.ajaxloadpage.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 30px 15px;
+        }
+
+        .ajaxloadpage-content {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 22px;
+        }
+    </style>
 </head>
 <body>
 <ul class="nav justify-content-center ajaxloadpage-indexnav">
@@ -31,5 +46,25 @@
 <div class="ajaxloadpage-content">
     这是 Test2 Page 的内容！
 </div>
+<script>
+    $("body").AjaxLoadPage({
+        bindNodes: ".ajaxloadpage-nav a, .ajaxloadpage-indexnav a",
+        replaceNodes: {
+            ".ajaxloadpage-nav": ".ajaxloadpage-nav",
+            ".ajaxloadpage-content": ".ajaxloadpage-content"
+        },
+        isHistory: true,
+        trigger: "click submit",
+        before: function () {
+            console.log('ajax before');
+        },
+        finished: function () {
+            console.log('ajax finished');
+        },
+        error: function () {
+            console.log('ajax error');
+        }
+    });
+</script>
 </body>
 </html>
