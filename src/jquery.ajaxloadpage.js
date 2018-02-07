@@ -16,10 +16,11 @@
                 newUrl = $(this).attr("action");
                 urlData = $(this).serialize();
             } else {
-                return false;
+                return true;
             }
-            _this.LoadPage(newUrl, urlData, _this.options);
+            _this.LoadPage(newUrl, urlData);
             event.preventDefault();
+            return false;
         });
     };
     //加载页面方法
