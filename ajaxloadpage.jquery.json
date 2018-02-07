@@ -1,0 +1,35 @@
+{
+  "name": "ajaxloadpage",
+  "title": "jQuery AjaxLoadPage",
+  "version": "0.0.1",
+  "author": {
+    "name": "ZhangTianJie",
+    "email": "ztj1993@gmail.com",
+    "url": "http://www.zhangtianjie.com/"
+  },
+  "description": "This is a ajax loading page plugin that supports local refresh.",
+  "keywords": [
+    "jquery",
+    "jquery-plugin",
+    "jquery-ajax",
+    "loadpage",
+    "ajaxloadpage"
+  ],
+  "homepage": "https://ztj1993.github.io/jQuery-AjaxLoadPage/",
+  "docs": "https://ztj1993.github.io/jQuery-AjaxLoadPage/",
+  "bugs": "https://github.com/ztj1993/jQuery-AjaxLoadPage/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/ztj1993/jQuery-AjaxLoadPage/blob/master/LICENSE"
+    }
+  ],
+  "main": "src/jquery.ajaxloadpage.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ztj1993/jQuery-AjaxLoadPage.git"
+  },
+  "dependencies": {
+    "jquery": ">=1.8.3"
+  }
+}
