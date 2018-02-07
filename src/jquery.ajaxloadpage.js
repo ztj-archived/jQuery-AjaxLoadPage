@@ -49,7 +49,7 @@
                 var parseHTML = $.parseHTML(response);
                 var jqHTML = $("<div>").append($(parseHTML));
                 $.each(_this.options.replaceNodes, function (oldNode, newNode) {
-                    $(oldNode).replaceWith(jqHTML.find(newNode));
+                    $(oldNode).html(jqHTML.find(newNode).children());
                 });
                 //替换页面状态
                 if (loadCount === 1) {
