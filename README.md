@@ -20,6 +20,7 @@
 | -------- | ---- | ------ | ---- | 
 | bindNodes | String | null | 绑定的节点，主要为 A 或者 FORM | 
 | replaceNodes | Json Object | {} | 替换的节点，键为当前页节点，值为请求页节点 | 
+| isHistory | Bool | true | 是否启用 History，主要对前进后退的支持 | 
 | trigger | String | "click submit" | 对 bindNodes 进行事件绑定 | 
 | before | Callback | None | Ajax 请求前 | 
 | finished | Callback | None | Ajax 请求完成 | 
@@ -33,6 +34,7 @@ $("body").AjaxLoadPage({
         "div.nav2": "div.nav2",
         "div.content": "div.content"
     },
+    isHistory: true,
     trigger: "click submit",
     before: function () {
         console.log('ajax before');
